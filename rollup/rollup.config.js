@@ -1,7 +1,10 @@
 import css from "rollup-plugin-css-only";
+import scss from "rollup-plugin-scss";
+import image from "@rollup/plugin-image";
+
 export default [
   {
-    input: "src/main.js",
+    input: "src/index.js",
     output: [
       {
         file: "build/bundle-cjs.js",
@@ -16,10 +19,10 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [css({ output: "bundle.css" })],
+    plugins: [css({ output: "build/bundle.css" }), scss(), image()],
   },
   {
-    input: "src/main.js",
+    input: "src/index.js",
     output: [
       {
         dir: "dist",
@@ -27,6 +30,6 @@ export default [
         sourcemap: true,
       },
     ],
-    plugins: [css({ output: "bundle.css" })],
+    plugins: [css({ output: "build/bundle.css" }), scss(), image()],
   },
 ];
