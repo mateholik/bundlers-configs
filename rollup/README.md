@@ -103,5 +103,25 @@ https://www.youtube.com/watch?v=IdxAJaKwuxQ&list=PLukNGYD6iW6IVdS2V844TMuqKethaQ
 ```
 npm install --save-dev rollup-plugin-scss@2
 import scss from 'rollup-plugin-scss'
- scss()
+scss({ output: "build/style.css" })
+```
+
+## Add img support
+
+```
+npm i -D @rollup/plugin-image
+import image from "@rollup/plugin-image";
+ plugins: [scss({ output: "build/style.css" }), image()],
+```
+
+## Add server
+
+```
+npm i -D rollup-plugin-serve
+import serve from "rollup-plugin-serve";
+plugins: [
+    scss({ output: "build/style.css" }),
+    image(),
+    serve({ open: true }),
+  ],
 ```

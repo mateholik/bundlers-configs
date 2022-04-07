@@ -1,5 +1,6 @@
 import scss from "rollup-plugin-scss";
 import image from "@rollup/plugin-image";
+import serve from "rollup-plugin-serve";
 
 export default [
   {
@@ -12,14 +13,23 @@ export default [
         inlineDynamicImports: true,
       },
       {
+        file: "build/bundle-cjs.js",
+        format: "cjs",
+        // sourcemap: true,
+        inlineDynamicImports: true,
+      },
+      {
         file: "build/bundle-es.js",
         format: "es",
         inlineDynamicImports: true,
         // sourcemap: true,
       },
     ],
-
-    plugins: [scss({ output: "build/style.css" }), image()],
+    plugins: [
+      scss({ output: "build/style.css" }),
+      image(),
+      serve({ open: true }),
+    ],
   },
   {
     input: "src/js/main.js",
