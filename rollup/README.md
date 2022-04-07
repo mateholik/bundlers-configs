@@ -1,9 +1,5 @@
 # ROLLUP
 
-uses tree shaking, f.e if module has 10 functions, but you only use 1, rollup only imports the code that you actually using. much smaller files to load
-
-ROLLUP CONFIG
-
 ## create package.json
 
 ```
@@ -18,6 +14,8 @@ npm i -D rollup
 
 ## create JS files
 
+add src folder from src-starter. dont forget to RENAME itto src
+
 ## create config
 
 ```
@@ -29,92 +27,96 @@ touch rollup.config.js
 
 ```
 export default {
-  input: "src/main.js",
+  input: "src/js/main.js",
   output: {
-    file: "build/bundle.js",
+    file: "build/bundle-cjs.js",
     format: "cjs",
   },
 };
-```
-
-## add settings MORE FORMATS
 
 ```
-export default {
-  input: "src/main.js",
-  output: [
+
+npm run start and you will see good tree shaking example
+
+## add settings MORE FORMATS ===
+
+```
+ output: [
     {
-      file: "build/bundle-cjs.js",
-      format: "cjs",
-    },
-    {
-      file: "build/bundle-es.js",
-      format: "es",
-    },
-  ],
-};
+        file: "build/bundle-cjs.js",
+        format: "cjs",
+      },
+      {
+        file: "build/bundle-umd.js",
+        format: "umd",
+      },
+      {
+        file: "build/bundle-es.js",
+        format: "es",
+        // sourcemap: true,
+      },
+    ],
 ```
 
 ## enable watching --watch
 
-## Chunk code with dynamix imports
+## Chunk code with dynamic imports ===
 
-"dev": "rollup src/main.js -f cjs -d dist/" <br>
-inlineDynamicImports: true
+update main.js and outputs
 
 ```
 module.exports = function () {
   import("./greetingsHelper").then(({ sayHelloTo }) =>
-    console.log(sayHelloTo("Ugnius"))
+    console.log(sayHelloTo("Rokas"))
   );
 };
+
+inlineDynamicImports: true,
 ```
 
-## add plugins (css)
+add another config, export not object but array of objects
 
-create style.css and import to mian.js
+```
+{
+    input: "src/js/main.js",
+    output: [
+      {
+        dir: "chunks",
+        format: "es",
+      },
+    ],
+  },
+```
+
+## add plugins (scss) ===
+
+create src/scss/main.scss and IMPORT to main.js
 
 rollup understand only js files.
 
-npm i -D rollup-plugin-css-only
-
-```
-import scss from "rollup-plugin-scss";
-export default {
- input: "src/main.js",
- output: [
-   {
-     file: "build/bundle-sjs.js",
-     format: "cjs",
-   },
-   {
-     file: "build/bundle-es.js",
-     format: "es",
-   },
- ],
- plugins: [scss(), image()],
-};
-```
-
-https://www.youtube.com/watch?v=IdxAJaKwuxQ&list=PLukNGYD6iW6IVdS2V844TMuqKethaQ62G&index=1&ab_channel=DailyTuition
-
-## Add sass support
-
 ```
 npm install --save-dev rollup-plugin-scss@2
+
 import scss from 'rollup-plugin-scss'
-scss({ output: "build/style.css" })
+
+plugins: [scss({ output: "build/style.css" })],
 ```
 
-## Add img support
+## Add img support ===
+
+create src/img/laughing.svg and IMPORT to main.js
 
 ```
+import laughing from "./../img/laughing.svg";
+const laughtImg = document.getElementById("laughtImg");
+laughtImg.src = laughing;
+
 npm i -D @rollup/plugin-image
 import image from "@rollup/plugin-image";
  plugins: [scss({ output: "build/style.css" }), image()],
 ```
 
-## Add server
+## Add server ===
 
 ```
 npm i -D rollup-plugin-serve
@@ -124,4 +126,8 @@ plugins: [
     image(),
     serve({ open: true }),
   ],
+```
+
+```
+
 ```

@@ -7,17 +7,16 @@ export default [
     input: "src/js/main.js",
     output: [
       {
-        file: "build/bundle-umd.js",
-        format: "umd",
-        // sourcemap: true,
+        file: "build/bundle-cjs.js",
+        format: "cjs",
         inlineDynamicImports: true,
       },
       {
-        file: "build/bundle-cjs.js",
-        format: "cjs",
-        // sourcemap: true,
+        file: "build/bundle-umd.js",
+        format: "umd",
         inlineDynamicImports: true,
       },
+
       {
         file: "build/bundle-es.js",
         format: "es",

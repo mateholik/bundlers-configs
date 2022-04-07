@@ -1,17 +1,18 @@
-import generateJoke from "./generateJoke";
+// import { sayHelloTo } from "./greetingsHelper";
+
+// module.exports = function () {
+//   const result = sayHelloTo("Rokas");
+//   console.log(result);
+// };
+
 import "./../scss/main.scss";
 import laughing from "./../img/laughing.svg";
 
 const laughtImg = document.getElementById("laughtImg");
 laughtImg.src = laughing;
 
-const jokeBtn = document.getElementById("jokeBtn");
-jokeBtn.addEventListener("click", generateJoke);
-
-generateJoke();
-
 module.exports = function () {
   import("./greetingsHelper").then(({ sayHelloTo }) =>
-    console.log(sayHelloTo("Lukas"))
+    console.log(sayHelloTo("Rokas"))
   );
 };
