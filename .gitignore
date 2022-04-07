@@ -1,5 +1,5 @@
 rollup/node_modules
-rollup/dist
+rollup/chunks
 rollup/buil
 
 webpack/node_modules

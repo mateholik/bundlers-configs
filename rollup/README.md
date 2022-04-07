@@ -1,33 +1,29 @@
-## Add sass support
-
-```
-npm install --save-dev rollup-plugin-scss@2
-import scss from 'rollup-plugin-scss'
- scss()
-```
-
-
 # ROLLUP
 
-uses tree shaking, f.e if module has 10 functions, but you only use 1, rollup only imports the code that you actually using. muchsmaller files to load
+uses tree shaking, f.e if module has 10 functions, but you only use 1, rollup only imports the code that you actually using. much smaller files to load
 
 ROLLUP CONFIG
 
 ## create package.json
 
+```
 npm init -y
+```
 
 ## install rollup
 
+```
 npm i -D rollup
+```
 
 ## create JS files
 
 ## create config
 
+```
 "start": "rollup --config",
-
 touch rollup.config.js
+```
 
 ## add settings
 
@@ -83,7 +79,7 @@ rollup understand only js files.
 npm i -D rollup-plugin-css-only
 
 ```
-import css from "rollup-plugin-css-only";
+import scss from "rollup-plugin-scss";
 export default {
  input: "src/main.js",
  output: [
@@ -96,8 +92,16 @@ export default {
      format: "es",
    },
  ],
- plugins: [css({ output: "bundle.css" })],
+ plugins: [scss(), image()],
 };
 ```
 
 https://www.youtube.com/watch?v=IdxAJaKwuxQ&list=PLukNGYD6iW6IVdS2V844TMuqKethaQ62G&index=1&ab_channel=DailyTuition
+
+## Add sass support
+
+```
+npm install --save-dev rollup-plugin-scss@2
+import scss from 'rollup-plugin-scss'
+ scss()
+```
