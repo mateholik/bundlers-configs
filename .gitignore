@@ -5,3 +5,11 @@ rollup/buil
 webpack/node_modules
 webpack/dist
 webpack/buil
+
+parcel/node_modules
+parcel/dist
+parcel/node_modules
+parcel/dist
+
+sbiwpack/node_modules
+sbiwpack/build
