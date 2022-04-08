@@ -1,0 +1,12 @@
+{
+  "name": "parcel-tutorial",
+  "version": "1.0.0",
+  "description": "## Generate JSON",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
